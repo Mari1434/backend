@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "58361ebd-c951-4f68-a342-b325b374d8ce",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48204199",
+		"_collection_link": "https://mariana-libanio-2786745.postman.co/workspace/69f182fb-97c5-4b2d-8776-2d20e5e2a860/collection/48204199-58361ebd-c951-4f68-a342-b325b374d8ce?action=share&source=collection_link&creator=48204199"
+	},
+	"item": [
+		{
+			"name": "Listar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/tarefas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tarefas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar tarefa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/tarefas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tarefas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Procurar ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/tarefas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tarefas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/tarefas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tarefas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/tarefas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tarefas"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
