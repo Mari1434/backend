@@ -11,35 +11,62 @@ tags:
 paths:
   /tarefas:
     get:
+      summary: Lista as tarefas
+      tags:
+        - tarefas
       responses:
         200:
+          description: Operação com sucesso
           content: 
             application/json:
               schema:
                 type: array
+                items:
+                  $ref: '#/components/schemas/Tarefa'
         500:
+          description: Erro inesperado
           content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Erro'
     post:
+      summary: Criar uma tarefa
+      tags:
+        - tarefas
       requestBody:
         content:
           application/json:
             schema:
               type: object
+              properties:
+                nome:
+                  type: string
+                  example: Estudar Swagger
       responses:
         201:
+          description: Tarefa criada com sucesso
           content:
             application/json:
               schema:
-                type:
-        500:
-          content:
-            application/json:
-              schema:
-                type: object
+                $ref: '#/components/schemas/Tarefa'
         422:
+          description: Nome é obrigatório
           content:
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Erro'
+        500:
+          description: Erro inesperado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Erro'
   /tarefas/id:
     get:
+      summary: Obter uma tarefa pelo id
+      tags:
+        - tarefas
       parameters:
         - in: path
           name: tarefaId
@@ -48,26 +75,35 @@ paths:
           required: true
       responses:
         200:
+          description: Tarefa encontrada
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Tarefa'
         400:
+          description: ID inválido
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Erro'
         404:
+          description: Tarefa não encontrada
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Erro'
         500:
+          description: Erro no servidor
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Erro'
     put:
+      security:
+        - token_jwt: []
+      summary: Atualizar uma tarefa existente
+      tags:
+        - tarefas
       parameters:
         - in: path
           name: tarefaId
@@ -79,30 +115,48 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  nome:
+                    type: string
+                  concluida:
+                    type: boolean
       responses:
         200:
+          description: Tarefa atualizada com sucesso
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Tarefa'
         400:
+          description: ID inválido
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Erro'
         404:
+          description: Tarefa não encontrada
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Erro'
         422:
+          description: Erro de validação
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Erro'
         500:
+          description: Erro inesperado
           content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Erro'
     delete:
+      security:
+        - token_jwt: []
+      summary: Deletar um usuário pelo id
+      tags:
+        - tarefas
       parameters:
         - in: path
           name: tarefaId
@@ -111,20 +165,48 @@ paths:
           required: true
       responses:
         204:
+          description: Usuário deletado
           content:
             application/json:
               schema:
                 type: object
         400:
+          description: ID inválido
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Erro'
         404:
+          description: Tarefa não encontrada
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Erro'
         500:
+          description: Erro inesperado
           content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Erro'
 components:
+  schemas:
+    Tarefa:
+      type: object
+      properties:
+        id:
+          type: string
+        nome:
+          type: string
+        concluida:
+          type: boolean
+    Erro:
+      type: object
+      properties:
+        msg:
+          type: string
+  securitySchemes:
+    token_jwt:
+      type: http
+      scheme: bearer
+      in: header
+      name: Authorization
